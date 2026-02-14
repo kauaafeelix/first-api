@@ -36,7 +36,7 @@ public class ContactService {
         }
 
         if (repository.existsByTelefone(request.telefone())){
-            throw new IllegalArgumentException("Telefone já existe e não pode ser cadastrado.");
+            throw new InvalidPhoneNumberException("Telefone já existe e não pode ser cadastrado.");
         }
 
         Contact contact = mapper.toEntity(request);
