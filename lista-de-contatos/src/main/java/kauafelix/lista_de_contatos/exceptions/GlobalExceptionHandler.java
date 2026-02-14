@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler extends RuntimeException {
 
     @ExceptionHandler(InvalidPhoneNumberException.class)
-    public ResponseEntity<String> handleValidationErrors(IllegalArgumentException ex) {
+    public ResponseEntity<String> handleInvalidPhone(InvalidPhoneNumberException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 }
