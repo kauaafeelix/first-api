@@ -12,9 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ContactService {
@@ -49,6 +47,12 @@ public class ContactService {
         return repository.findAll().stream()
                 .map(mapper::toDto)
                 .toList();
+    }
+
+    public DtoContactResponse findById(Long id){
+        return repository.findById(id)
+                .map(mapper::toDto)
+                .orElseThrow(() -> new IllegalArgumentException("Contato não encontrado!"));
     }
 
     public void deleteContact(@PathVariable Long id){
